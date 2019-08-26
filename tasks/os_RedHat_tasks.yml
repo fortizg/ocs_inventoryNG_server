@@ -151,20 +151,20 @@
     state: restarted
 
 - name: Create answer file to location
-  templates:
+  template:
     src: responsefile.j2
     dest: "{{ unzip_location }}/OCSNG_UNIX_SERVER_{{ ocs_version }}/responsefile.txt"
 
 - name: ocsinventory conf file
   stat:
-    path: "{{ apache_include_conf_directory }}z-ocsinventory-server.conf"
+    path: "{{ apache_include_conf_directory }}/z-ocsinventory-server.conf"
   register: ocsconffile
 
 - name: execute install script with answer file
   shell: ./setup.sh < responsefile.txt
   args:
     chdir: "{{ unzip_location }}/OCSNG_UNIX_SERVER_{{ ocs_version }}/"
-  when: ocsconffile.stat.exists
+  when: ocsconffile.stat.exists == false
 
 - name: change mode of ocsinventory-reports folder
   file:
