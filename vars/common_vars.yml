@@ -1,7 +1,6 @@
 ---
 ocs_version: 2.6
 
-#unzip_location: /home
 unzip_location: /var/tmp
 
 ocs_database_name: ocsweb
