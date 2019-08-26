@@ -20,5 +20,12 @@
     method: POST
     body: "name={{ ocs_database_user }}&pass={{ ocs_database_pass }}&database={{ ocs_database_name }}&host={{ ocs_database_server }}"
 
+- name: perform database update
+  uri:
+    url: http://{{ ansible_default_ipv4.address }}/ocsreports/
+    method: POST
+    body: "update=Perform+the+update"
+
+
 - name: Cleaning duties
   include_tasks: cleanup.yml
