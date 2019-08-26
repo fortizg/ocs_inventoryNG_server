@@ -14,7 +14,7 @@
 
 - name: Install remi repo
   yum:
-    name: http://rpms.famillecollet.com/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm
+    name: http://rpms.remirepo.net/enterprise/remi-release-{{ ansible_distribution_major_version }}.rpm
     state: present
   when: ansible_distribution == "CentOS"
 
@@ -109,6 +109,7 @@
 - name: install php and php modules
   yum:
     name:
+      - php-cli
       - php{{ php_version }}
       - php{{ php_version }}-php
       - php{{ php_version }}-php-mysqlnd
